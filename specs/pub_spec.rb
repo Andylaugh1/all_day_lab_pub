@@ -20,7 +20,8 @@ class PubTest < MiniTest::Test
     @customer1 = Customer.new("Euan", 25, 100, 20)
     @customer2 = Customer.new("Andy", 16, 90, 20)
 
-    @pub = Pub.new("Chanter", 500, ["JD", "Beer", "Wine", "Vodka"])
+    # @pub = Pub.new("Chanter", 500, [@drink1, @drink2, @drink3, @drink4])
+    @pub = Pub.new("Chanter", 500, {:@drink1 => 5, :@drink2 => 10, :@drink3 => 8, :@drink4 => 12})
 
   end
 
@@ -75,6 +76,16 @@ class PubTest < MiniTest::Test
   def test_reduce_cust_drunkenness_level
     customer_reduce = @pub.reduce_customer_drunkenness(@customer1, @food1)
     assert_equal(5, @customer1.drunkenness)
+  end
+
+  def test_stock_count
+    count_stock = @pub.stock_count()
+    assert_equal(35, count_stock)
+  end
+
+  def test_value_of_drink
+    value_of_drink = @pub.drink_stock_value(@drink1)
+    assert_equal(25, value_of_drink)
   end
 
 

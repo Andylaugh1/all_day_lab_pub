@@ -1,7 +1,7 @@
 class Pub
 
-  attr_reader :name, :drinks
-  attr_accessor :till
+  attr_reader :name
+  attr_accessor :till, :drinks
 
   def initialize(name, till, drinks)
     @name = name
@@ -49,5 +49,16 @@ class Pub
     customer.buy_food(food)
   end
 
+  def stock_count()
+    stock = 0
+    @drinks.each do |d, q|
+      stock += q
+    end
+    return stock
+  end
+
+  def drink_stock_value(drink)
+    return @drinks[:@drink1] * drink.price
+  end
 
 end
