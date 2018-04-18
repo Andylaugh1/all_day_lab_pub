@@ -88,8 +88,9 @@ class PubTest < MiniTest::Test
     assert_equal(25, value_of_drink)
   end
 
-
-
-
+  def test_total_value_of_stock
+    value_of_stock = @pub.total_stock_value(@drink1, @drink2, @drink3, @drink4)
+    assert_equal(135, value_of_stock)
+  end
 
 end

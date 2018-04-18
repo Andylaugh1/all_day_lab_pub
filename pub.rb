@@ -3,10 +3,11 @@ class Pub
   attr_reader :name
   attr_accessor :till, :drinks
 
-  def initialize(name, till, drinks)
+  def initialize(name, till, drinks, stock_count=0)
     @name = name
     @till = till
     @drinks = drinks
+    @stock_count = 0
 
   end
 
@@ -59,6 +60,14 @@ class Pub
 
   def drink_stock_value(drink)
     return @drinks[:@drink1] * drink.price
+  end
+
+  def total_stock_value(drink1, drink2, drink3, drink4)
+    @stock_count += (@drinks[:@drink1] * drink1.price)
+    @stock_count += (@drinks[:@drink2] * drink2.price)
+    @stock_count += (@drinks[:@drink3] * drink3.price)
+    @stock_count += (@drinks[:@drink4] * drink4.price)
+    return @stock_count
   end
 
 end
